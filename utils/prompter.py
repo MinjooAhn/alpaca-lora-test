@@ -34,11 +34,11 @@ class Prompter(object):
         # returns the full prompt from instruction and optional input
         # if a label (=response, =output) is provided, it's also appended.
         if input:
-            res = self.template["prompt_input"].format(
+            res = self.template["essay_prompt"].format(
                 instruction=instruction, input=input
             )
         else:
-            res = self.template["prompt_no_input"].format(
+            res = self.template["essay"].format(
                 instruction=instruction
             )
         if label:

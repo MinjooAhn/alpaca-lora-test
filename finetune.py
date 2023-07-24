@@ -36,7 +36,7 @@ def train(
     num_epochs: int = 3,
     learning_rate: float = 3e-4,
     cutoff_len: int = 256,
-    val_set_size: int = 2000,
+    val_set_size: int = 100,
     # lora hyperparams
     lora_r: int = 8,
     lora_alpha: int = 16,
@@ -55,7 +55,7 @@ def train(
     wandb_watch: str = "",  # options: false | gradients | all
     wandb_log_model: str = "",  # options: false | true
     resume_from_checkpoint: str = None,  # either training checkpoint or final adapter
-    prompt_template_name: str = "C1_template",  # The prompt template to use, will default to alpaca.
+    prompt_template_name: str = "templates/C1_template.json",  # The prompt template to use, will default to alpaca.
 ):
     if int(os.environ.get("LOCAL_RANK", 0)) == 0:
         print(

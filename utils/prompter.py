@@ -35,7 +35,7 @@ class Prompter(object):
         # if a label (=response, =output) is provided, it's also appended.
         if input:
             res = self.template["prompt_input"].format(
-                instruction= instruction, input= input, label = label
+                essay_prompt = instruction, essay= input, grade = label
             )
         else:
             res = self.template["prompt_input"].format(

@@ -87,6 +87,7 @@ def main(
     def evaluate(
         instruction,
         input=None,
+        response = None,
         temperature=0.1,
         top_p=0.75,
         top_k=40,
@@ -95,7 +96,7 @@ def main(
         stream_output=False,
         **kwargs,
     ):
-        prompt = prompter.generate_prompt(instruction, input)
+        prompt = prompter.generate_prompt(instruction, input, response)
         inputs = tokenizer(prompt, return_tensors="pt")
         input_ids = inputs["input_ids"].to(device)
         generation_config = GenerationConfig(

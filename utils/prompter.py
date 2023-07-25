@@ -29,14 +29,22 @@ class Prompter(object):
         self,
         instruction: str,
         input: Union[None, str] = None,
-        response: Union[None, str] = None,
+        label: Union[None, str] = None,
     ) -> str:
         # returns the full prompt from instruction and optional input
         # if a label (=response, =output) is provided, it's also appended.
         if input:
             res = self.template["prompt_input"].format(
-                essay_prompt = instruction, essay= input, grade = response
+                instruction=instruction, input=input
             )
+        else:
+            res = self.template["prompt_no_input"].format(
+                instruction=instruction
+            )
+        if label:
+            res = f"{res}{label}"
+        if self._verbose:
+            print(res)
         return res
 
     def get_response(self, output: str) -> str:
